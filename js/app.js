@@ -59,28 +59,18 @@
   };
 
 
-  // event listener, button
   $('button').click(function() {
     event.preventDefault()
-    // alert('Handler for .click() called.')
-    if($(this).val() == ''){
-        alert('Guy, your input was empty. Enter a good movie. One example is "The Big Lebowski." Now get searching!')
+    let search = $('#search').val()
+    if (search == '') {
+      alert('Guy, your input was empty. Enter a good movie. One example is "The Big Lebowski." Now get searching!')
+    } else {
+      var $xhr = $.getJSON('https://omdb-api.now.sh/?s=' + search)
+      $xhr.done(function(response) {
+        console.log($xhr)
+      })
     }
-
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
