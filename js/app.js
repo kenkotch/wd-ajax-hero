@@ -17,7 +17,9 @@
         'data-tooltip': movie.title
       });
 
-      $title.tooltip({ delay: 50 }).text(movie.title);
+      $title.tooltip({
+        delay: 50
+      }).text(movie.title);
 
       const $poster = $('<img>').addClass('poster');
 
@@ -56,5 +58,36 @@
     }
   };
 
-  // ADD YOUR CODE HERE
+
+  // event listener, button
+  $('button').click(function() {
+    event.preventDefault()
+    // alert('Handler for .click() called.')
+    if($(this).val() == ''){
+        alert('Guy, your input was empty. Enter a good movie. One example is "The Big Lebowski." Now get searching!')
+    }
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })();
