@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  const movies = [];
+  let movies = [];
 
   const renderMovies = function() {
     $('#listings').empty();
@@ -61,23 +61,28 @@
 
   $('button').click(function() {
     event.preventDefault()
+    movies = []
     let search = $('#search').val()
     if (search == '') {
+      renderMovies()
       alert('Guy, your input was empty. Enter a good movie. One example is "The Big Lebowski." Now get searching!')
     } else {
+      //split ' ', join %20  // do i need this?
       var $xhr = $.getJSON('https://omdb-api.now.sh/?s=' + search)
       $xhr.done(function(response) {
-        console.log($xhr)
+        let giantArray = response.Search
+        for (let things of giantArray) {
+
+          let movie = {
+            title: things.Title,
+            poster: things.Poster,
+            year: things.Year,
+            imdbID: things.imdbID
+          }
+          movies.push(movie)
+        }
+        renderMovies()
       })
     }
   })
-
-
-
-
-
-
-
-
-
 })();
